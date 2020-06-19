@@ -1,0 +1,57 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<body>
+    <div id="login">
+        <h3 class="text-center text-white pt-5">Login form</h3>
+        <div class="container">
+            <div id="login-row" class="row justify-content-center align-items-center">
+                <div id="login-column" class="col-md-6">
+                    <div id="login-box" class="col-md-12">
+                        
+                        <h6 class="h5 mb-0 mt-4">Create your account</h6>
+                        <p class="text-muted mt-0 mb-4">Create a free account and start using Shreyu</p>
+
+                        <form action="" method="POST" class="authentication-form">
+                            {% csrf_token %}
+                            {% for field in form %}
+                            <div class="form-group">
+                                <label class="form-control-label">{{ field.label_tag }}</label>
+                                <div class="input-group input-group-merge">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="icon-dual" data-feather="mail"></i>
+                                        </span>
+                                    </div>
+                                    {{ field }}<br>
+                                    
+                                {% for error in field.errors %}
+                                  <p style="color: red">{{ error }}</p>
+                                {% endfor %}
+                                </div>
+                            </div>
+                              
+                            {% endfor %}
+
+                            <div class="form-group mb-4">
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input"
+                                        id="checkbox-signup" checked>
+                                    <label class="custom-control-label" for="checkbox-signup">
+                                        I accept <a href="javascript: void(0);">Terms and Conditions</a>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="form-group mb-0 text-center">
+                                <button class="btn btn-primary btn-block" type="submit">Sign Up</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
